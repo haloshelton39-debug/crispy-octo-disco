@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Каталог данных репозитория</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Данные репозитория</p>
+          <h1>Веб-приложение каталога</h1>
+          <p class="subtitle">
+            Просматривайте записи, быстро находите нужные элементы и следите за
+            статистикой набора данных.
+          </p>
+        </div>
+        <div class="stats" aria-live="polite">
+          <div class="stat">
+            <span class="stat-label">Всего записей</span>
+            <span id="total-count" class="stat-value">—</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Активных</span>
+            <span id="active-count" class="stat-value">—</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Категорий</span>
+            <span id="category-count" class="stat-value">—</span>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="controls" aria-label="Фильтры каталога">
+          <label class="control">
+            <span>Поиск</span>
+            <input id="search-input" type="search" placeholder="Название или владелец" />
+          </label>
+          <label class="control">
+            <span>Категория</span>
+            <select id="category-filter">
+              <option value="all">Все</option>
+            </select>
+          </label>
+          <label class="control">
+            <span>Статус</span>
+            <select id="status-filter">
+              <option value="all">Любой</option>
+              <option value="active">Активный</option>
+              <option value="paused">Приостановлен</option>
+              <option value="planned">Запланирован</option>
+            </select>
+          </label>
+        </section>
+
+        <section class="grid" aria-live="polite" aria-label="Список записей">
+          <div id="cards" class="cards"></div>
+          <div id="empty-state" class="empty-state" hidden>
+            <h2>Нет совпадений</h2>
+            <p>Попробуйте изменить фильтры или строку поиска.</p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>Сформировано на основе данных, хранящихся в репозитории.</p>
+      </footer>
+    </div>
+
+    <template id="card-template">
+      <article class="card">
+        <div class="card-header">
+          <div>
+            <p class="card-category"></p>
+            <h2 class="card-title"></h2>
+          </div>
+          <span class="badge"></span>
+        </div>
+        <p class="card-summary"></p>
+        <dl class="card-meta">
+          <div>
+            <dt>Владелец</dt>
+            <dd class="card-owner"></dd>
+          </div>
+          <div>
+            <dt>Обновление</dt>
+            <dd class="card-updated"></dd>
+          </div>
+        </dl>
+        <ul class="card-tags"></ul>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
